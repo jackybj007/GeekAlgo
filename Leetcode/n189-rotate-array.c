@@ -31,3 +31,24 @@ void rotate(int* nums, int numsSize, int k) {
         free(copy_nums);
     }
 }
+
+void rotate(int* nums, int numsSize, int k) {
+
+    int i, j, temp;
+
+    k = k % numsSize;
+
+    if ( (numsSize == 1) || (k == 0) ) {
+        return;
+    }
+
+    j = 0;
+    while (j < k) {
+        temp = nums[numsSize - 1];
+        for (i = numsSize - 1; i > 0; i--) {
+            nums[i] = nums[i-1];
+        }
+        nums[0] = temp;
+        j ++;
+    }
+}
