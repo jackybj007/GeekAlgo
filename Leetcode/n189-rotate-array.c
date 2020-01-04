@@ -1,3 +1,29 @@
+void reserse(int* left, int* right) {
+    int temp;
+    while (left < right) {
+        temp = *right;
+        *right = *left;
+        *left = temp;
+        left ++;
+        right --;
+    }
+}
+
+void rotate(int* nums, int numsSize, int k) {
+
+    int i, j;
+
+    k = k % numsSize;
+
+    if ( (numsSize == 1) || (k == 0) ) {
+        return;
+    }
+
+    reserse(nums, nums + numsSize -1);
+    reserse(nums, nums + k -1);
+    reserse(nums + k, nums + numsSize -1);
+}
+
 void rotate(int* nums, int numsSize, int k) {
     int * copy_nums;
     int i, j;
