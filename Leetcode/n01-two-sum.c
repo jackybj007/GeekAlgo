@@ -9,6 +9,10 @@ struct hash_table {
     int width;
 };
 
+int hashtable_hash(struct hash_table * ht, int key) {
+    return abs(key) % ht->width;
+}
+
 int hashtable_init(struct hash_table * ht, int width) {
     if (width <= 0) {
         return -1;
@@ -22,10 +26,6 @@ int hashtable_init(struct hash_table * ht, int width) {
     ht->head = tmpht;
     ht->width = width;
     return 0;
-}
-
-int hashtable_hash(struct hash_table * ht, int key) {
-    return abs(key) % ht->width;
 }
 
 void hashtable_fini(struct hash_table * ht) {
